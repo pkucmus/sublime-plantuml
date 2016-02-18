@@ -10,12 +10,15 @@ Then a new view is opened with the UML png rendered.
 
 Browse to your Sublime Text 3 packages directory
 
-  cd ~/.config/sublime-text-3/Packages
-  git clone git@github.com:pkucmus/sublime-plantuml.git PlantUML
+```
+cd ~/.config/sublime-text-3/Packages
+git clone git@github.com:pkucmus/sublime-plantuml.git PlantUML
+```
 
 It uses docker (configuration awareness to change the plantuml executable contribution welcome)
 
-  cd ~/.config/sublime-text-3/Packages/PlantUML
-  docker build -t plantuml .
-  
+```
+cd ~/.config/sublime-text-3/Packages/PlantUML
+docker build -t plantuml .
+```
 Restart Sublime you should be ready to go.
