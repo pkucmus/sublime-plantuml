@@ -18,10 +18,18 @@ class PlantUmlCommand(sublime_plugin.TextCommand):
                 stdout=image_file, stdin=PIPE, stderr=PIPE
             )
             p.communicate(input=bytes(content, 'utf-8'))[0]
-        self.view.window().open_file(img_file_name)
-        self.view.window().focus_view(self.view)
-        self.view.erase_status('plant')
-        sublime.status_message()
+
+        view = self.find_view(img_file_name)
+        if view is None:
+            view = self.view
+        view.window().open_file(img_file_name)
+        view.window().focus_view(self.view)
+        view.erase_status('plant')
+
+    def find_view(self, img_file_name):
+        for window in sublime.windows():
+            return window.find_open_file(os.path.abspath(img_file_name))
+        return None
 
 
 class BehaveAutocomplete(sublime_plugin.EventListener):
